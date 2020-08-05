@@ -20,6 +20,8 @@
         <module>activemq</module>
         <module>activemq_producer</module>
         <module>activemq_consumer</module>
+        <module>rabbitmq_producer</module>
+        <module>rabbitmq_consumer</module>
     </modules>
 
     <properties>
@@ -48,6 +50,10 @@
 <!--            <groupId>com.alibaba.cloud</groupId>-->
 <!--            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
 <!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
