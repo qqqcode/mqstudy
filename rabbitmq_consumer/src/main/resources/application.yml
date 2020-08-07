@@ -4,8 +4,14 @@ server:
 spring:
   application:
     name: rabbitmq-production
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/qqq?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
-    username: root
-    password: 123456
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/qqq?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+#    username: root
+#    password: 123456
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: qqq
+    password: qqq
+    virtual-host: /qqq

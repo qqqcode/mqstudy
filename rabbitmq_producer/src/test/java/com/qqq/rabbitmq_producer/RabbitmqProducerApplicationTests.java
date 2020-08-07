@@ -1,10 +1,12 @@
 package com.qqq.rabbitmq_producer;
 
+import com.qqq.rabbitmq_producer.service.ProducerService;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
@@ -66,5 +68,12 @@ class RabbitmqProducerApplicationTests {
             }
 
         }
+    }
+
+    @Autowired
+    private ProducerService producerService;
+    @Test
+    public void simpleSendWithTemplate(){
+        producerService.simpleSend("qqq 123");
     }
 }
