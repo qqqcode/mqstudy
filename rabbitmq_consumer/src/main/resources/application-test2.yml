@@ -1,9 +1,9 @@
 
 server:
-  port: 9012
+  port: 9022
 spring:
   application:
-    name: rabbitmq-production
+    name: rabbitmq-consumer-test2
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/qqq?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8

@@ -11,7 +11,7 @@ public class RabbitmqConsumerApplication {
         SpringApplication.run(RabbitmqConsumerApplication.class, args);
     }
 
-    @RabbitListener(queues = "qqqQueue")
+    @RabbitListener(queues = "work_queue")
     public void receiveMsg(String msg){
         System.out.println(">>>>>>>>>>>>>>>>>");
         System.out.println(msg);
