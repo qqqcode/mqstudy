@@ -76,7 +76,7 @@ class RabbitmqProducerApplicationTests {
     private ProducerService producerService;
     @Test
     public void simpleSendWithTemplate(){
-        producerService.simpleSend("qqq 123");
+        producerService.simpleSend("qqq deletle");
     }
 
     public static String QUEUE_NAME = "work_queue";

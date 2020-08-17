@@ -6,4 +6,6 @@ package com.qqq.rabbitmq_producer.service;
  */
 public interface ProducerService {
     void simpleSend(String string);
+
+    String topicSendMsg(String msg,String key);
 }
