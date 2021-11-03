@@ -1,12 +1,10 @@
 package com.qqq.activemq_producer;
 
 import com.qqq.activemq_producer.service.ActiveMqService;
-import org.apache.activemq.ActiveMQConnection;
-import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.ScheduledMessage;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.connection.JmsTransactionManager;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.jms.core.JmsTemplate;
@@ -32,6 +30,20 @@ class ActivemqProducerApplicationTests {
     @Test
     public void test01(){
         activeMqService.ptpSender("qqq nice ptp!");
+    }
+
+    @Test
+    @JmsListener(destination = "qqqQueue1",containerFactory = "jmsListenerContainerFactory")
+    public void receiveMessage(Message message, Session session){
+        if(message instanceof TextMessage){
+            TextMessage textMessage = (TextMessage)message;
+            try {
+                System.out.println("接收消息: " + textMessage.getText());
+                textMessage.acknowledge();
+            }catch (JMSException e){
+                e.printStackTrace();
+            }
+        }
     }
 
     @Autowired
@@ -76,7 +88,7 @@ class ActivemqProducerApplicationTests {
 
             for(int i=0;i<10;i++){
                 TextMessage textMessage = session.createTextMessage("mes : " + i);
-                textMessage.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_DELAY,10000);
+                //textMessage.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_DELAY,10000);
                 qqqQueueWithTx.send(textMessage);
             }
 

@@ -23,6 +23,10 @@
         <module>rabbitmq_producer</module>
         <module>rabbitmq_consumer</module>
         <module>comment</module>
+        <module>rocketmq_consumer</module>
+        <module>rocketmq_producer</module>
+        <module>producer</module>
+        <module>consumer</module>
     </modules>
 
     <properties>
@@ -31,9 +35,13 @@
     </properties>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-activemq</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-activemq</artifactId>
+            <artifactId>spring-boot-starter-artemis</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

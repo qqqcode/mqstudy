@@ -3,10 +3,12 @@ package com.qqq.activemq;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.qqq.activemq.mapper.UserMapper;
 import com.qqq.activemq.pojo.User;
-import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.jms.core.JmsTemplate;
 
 import javax.jms.*;
 import java.util.Arrays;
@@ -216,4 +218,31 @@ class ActivemqApplicationTests {
 
         //监听器下不能释放连接，一旦关闭，消息无法接收
     }
+
+    @Autowired
+    private JmsTemplate jmsTemplate;
+
+    @Test
+    public void ptpSend() {
+
+        Destination defaultDestination = jmsTemplate.getDefaultDestination();
+
+        jmsTemplate.convertAndSend("qqqQueue", "ptptest");
+
+    }
+
+    @Test
+    @JmsListener(destination = "qqqQueue")
+    public void receiveMessage(Message message) {
+        if (message instanceof TextMessage) {
+            TextMessage textMessage = (TextMessage) message;
+            try {
+                System.out.println("接收消息: " + textMessage.getText());
+            } catch (JMSException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }
