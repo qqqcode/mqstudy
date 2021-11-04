@@ -10,13 +10,13 @@ import javax.jms.Session;
 @Configuration
 public class ActiveMQConfig {
 
-//    @Bean("jmsListenerContainerFactory")
-//    public DefaultJmsListenerContainerFactory defaultJmsListenerContainerFactory(ConnectionFactory connectionFactory){
-//        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-//        factory.setConnectionFactory(connectionFactory);
-//        factory.setSessionTransacted(false);
-//        //factory.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
-//        factory.setSessionAcknowledgeMode(4);
-//        return factory;
-//    }
+    @Bean("jmsListenerContainerFactory")
+    public DefaultJmsListenerContainerFactory defaultJmsListenerContainerFactory(ConnectionFactory connectionFactory){
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setSessionTransacted(false);
+        //factory.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
+        factory.setSessionAcknowledgeMode(4);
+        return factory;
+    }
 }
